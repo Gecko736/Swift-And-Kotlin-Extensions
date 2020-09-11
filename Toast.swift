@@ -34,7 +34,6 @@ class ViewController: UIViewController {
 			toastView.alpha = 0.9
 			let toastLabel = UILabel(frame: self.toastLabel.frame)
 			toastLabel.textColor = .clear
-			toastLabel.font = Brand.regular
 			toastLabel.textAlignment = .center
 			toastLabel.lineBreakMode = .byWordWrapping
 			toastLabel.text = text
@@ -48,8 +47,8 @@ class ViewController: UIViewController {
 					toastView.layer.cornerRadius = self.cornerRadius
 					self.toasts.append(contentsOf: [toastView, toastLabel])
 					UIView.animate(withDuration: 0.2, delay: 0.01, options: .curveEaseInOut, animations: {
-						toastView.backgroundColor = Brand.black
-						toastLabel.textColor = Brand.white
+						toastView.backgroundColor = .black
+						toastLabel.textColor = .white
 						for toast in self.toasts {
 							toast.frame.origin.y -= toastView.frame.height + 4
 						}
