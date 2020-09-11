@@ -37,6 +37,7 @@ class ViewController: UIViewController {
 			toastLabel.textAlignment = .center
 			toastLabel.lineBreakMode = .byWordWrapping
 			toastLabel.text = text
+			toastLabel.font = self.toastLabel.font
 			toastLabel.numberOfLines = 2
 			DispatchQueue(label: String.randomHex(ofLength: 6), qos: .utility).async {
 				self.toastGuard.wait()
@@ -47,8 +48,8 @@ class ViewController: UIViewController {
 					toastView.layer.cornerRadius = self.cornerRadius
 					self.toasts.append(contentsOf: [toastView, toastLabel])
 					UIView.animate(withDuration: 0.2, delay: 0.01, options: .curveEaseInOut, animations: {
-						toastView.backgroundColor = .black
-						toastLabel.textColor = .white
+						toastView.backgroundColor = self.toastView.backgroundColor
+						toastLabel.textColor = self.toastLabel.textColor
 						for toast in self.toasts {
 							toast.frame.origin.y -= toastView.frame.height + 4
 						}
