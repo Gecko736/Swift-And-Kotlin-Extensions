@@ -26,7 +26,7 @@ extension Bool {
 }
 
 extension UInt16 {
-	var toHex: String { "\(hiByte.toHex)\(loByte.toHex)" }
+	var toHex: String { String(format: "%04X", self) }
 	
 	var hiByte: UInt8 { UInt8(self >> 8) }
 	
