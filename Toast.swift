@@ -63,6 +63,7 @@ class ViewController: UIViewController {
 						toastLabel.alpha = 0
 					}, completion: { _ in
 						toastLabel.removeFromSuperview()
+						toastView.removeFromSuperview()
 						self.toasts.removeFirst(2)
 					})
 				}
