@@ -1,19 +1,8 @@
 extension UInt8 {
 	var toHex: String { String(format: "%02X", self) }
 	
-	subscript(index: Int) -> Bool {
-		switch index {
-		case 0: return (self & 0x80) == 0x80
-		case 1: return (self & 0x40) == 0x40
-		case 2: return (self & 0x20) == 0x20
-		case 3: return (self & 0x10) == 0x10
-		case 4: return (self & 0x08) == 0x08
-		case 5: return (self & 0x04) == 0x04
-		case 6: return (self & 0x02) == 0x02
-		case 7: return (self & 0x01) == 0x01
-		default: fatalError("Index \(index) out of range in byte \(toHex)")
-		}
-	}
+	private static let masks: [UInt8] = [0x80, 0x40, 0x20, 0x10, 0x08, 0x04, 0x02, 0x01]
+	subscript(index: Int) -> Bool { (self & UInt8.masks[index]) == UInt8.masks[index] }
 }
 
 extension Bool {
@@ -31,4 +20,10 @@ extension UInt16 {
 	var hiByte: UInt8 { UInt8(self >> 8) }
 	
 	var loByte: UInt8 { UInt8(self & 0xFF) }
+	
+	private static let masks: [UInt16] = [
+		0x8000, 0x4000, 0x2000, 0x1000, 0x0800, 0x0400, 0x0200, 0x1000,
+		0x0080, 0x0040, 0x0020, 0x0010, 0x0008, 0x0004, 0x0002, 0x0001
+	]
+	subscript(index: Int) -> Bool { (self & UInt16.masks[index]) == UInt16.masks[index] }
 }
