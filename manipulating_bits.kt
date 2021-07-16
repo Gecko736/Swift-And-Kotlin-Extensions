@@ -23,3 +23,11 @@ fun BooleanArray.shift(offset: Int) { // shifting right by default
 		System.arraycopy(buffer, 0, this, this.lastIndex - offset, offset)
 	}
 }
+
+fun sigmoid(x: Double) = (2.0 / (1 + Math.E.pow(-2 * x)) - 1
+
+fun sigmoidSimple(x: Double) = when {
+	x > 1 -> 1.0
+	x < -1 -> -1.0
+	else -> x
+}
